@@ -2,10 +2,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid');
     let width = 10;
     let bombAmount = 20;
+    let isGameOver = false;
     let squares = [];
 
     function click(square) {
-        console.log(square.getAttribute('id'));
+        if (isGameOver) return;
+        if (square.classList.contains('checked') || square.classList.contains('flag')) return;
+        if (square.classList.contains('bomb')) {
+            console.log('Game Over');
+        } else {
+            let total = square.getAttribute('total');
+            if (total != 0) {
+                square.classList.add('checked');
+                square.innerHTML = total;
+                return;
+            }
+            square.classList.add('checked');
+        }
     }
 
     function createBoard() {
