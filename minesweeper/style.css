@@ -45,3 +45,24 @@ div {
     border-color: #f5f3eb #bab7a9 #bab7a9 #fff9db;
     box-sizing: border-box;
 }
+
+.one {
+    color: #e76346;
+}
+
+.two {
+    color: #4199d3;
+}
+
+.three {
+    color: #57da59;
+}
+
+.four {
+    color: #bb41d3;
+}
+
+#result {
+    margin-top: 5px;
+    color: #e76346;
+}
