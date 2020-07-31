@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function gameOver(square) {
-        result.innerHTML = 'Boom, Game Over!';
+        result.innerHTML = 'Boom, Game Over! (<a href="#" onclick="window.location.reload(true);">reload</a>)';
         isGameOver = true;
 
         squares.forEach((square) => {
@@ -57,49 +57,41 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             if (id > 0 && !isLeftEdge) {
                 const newId = squares[parseInt(id) - 1].id;
-                //const newId = parseInt(id) - 1   ....refactor
                 const newSquare = document.getElementById(newId);
                 click(newSquare);
             }
             if (id > 9 && !isRightEdge) {
                 const newId = squares[parseInt(id) + 1 - width].id;
-                //const newId = parseInt(id) +1 -width   ....refactor
                 const newSquare = document.getElementById(newId);
                 click(newSquare);
             }
             if (id > 10) {
                 const newId = squares[parseInt(id - width)].id;
-                //const newId = parseInt(id) -width   ....refactor
                 const newSquare = document.getElementById(newId);
                 click(newSquare);
             }
             if (id > 11 && !isLeftEdge) {
                 const newId = squares[parseInt(id) - 1 - width].id;
-                //const newId = parseInt(id) -1 -width   ....refactor
                 const newSquare = document.getElementById(newId);
                 click(newSquare);
             }
             if (id < 98 && !isRightEdge) {
                 const newId = squares[parseInt(id) + 1].id;
-                //const newId = parseInt(id) +1   ....refactor
                 const newSquare = document.getElementById(newId);
                 click(newSquare);
             }
             if (id < 90 && !isLeftEdge) {
                 const newId = squares[parseInt(id) - 1 + width].id;
-                //const newId = parseInt(id) -1 +width   ....refactor
                 const newSquare = document.getElementById(newId);
                 click(newSquare);
             }
             if (id < 88 && !isRightEdge) {
                 const newId = squares[parseInt(id) + 1 + width].id;
-                //const newId = parseInt(id) +1 +width   ....refactor
                 const newSquare = document.getElementById(newId);
                 click(newSquare);
             }
             if (id < 89) {
                 const newId = squares[parseInt(id) + width].id;
-                //const newId = parseInt(id) +width   ....refactor
                 const newSquare = document.getElementById(newId);
                 click(newSquare);
             }
@@ -132,12 +124,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const bombArray = Array(bombAmount).fill('bomb');
         const emptyArray = Array(width * width - bombAmount).fill('valid');
         const gameArray = emptyArray.concat(bombArray);
-        const shuffleArray = gameArray.sort(() => Math.random() - 0.5);
+        gameArray.sort(() => Math.random() - 0.5);
 
         for (let index = 0; index < width * width; index++) {
             const square = document.createElement('div');
             square.setAttribute('id', index);
-            square.setAttribute('class', shuffleArray[index]);
+            square.setAttribute('class', gameArray[index]);
             grid.appendChild(square);
             squares.push(square);
 
